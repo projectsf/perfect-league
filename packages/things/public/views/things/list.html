@@ -1,0 +1,11 @@
+<section data-ng-controller="ThingsController" data-ng-init="find()">
+    <ul class="things unstyled">
+        <li data-ng-repeat="thing in things">
+            <span>{{thing.created | date:'medium'}}</span> /
+            <span>{{thing.user.name}}</span>
+            <h2><a data-ng-href="#!/things/{{thing._id}}">{{thing.title}}</a></h2>
+            <div>{{thing.content}}</div>
+        </li>
+    </ul>
+    <h1 data-ng-hide="!things || things.length">No things yet. <br> Why don't you <a href="/#!/things/create">Create One</a>?</h1>
+</section>

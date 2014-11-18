@@ -1,0 +1,11 @@
+<section data-ng-controller="LocationsController" data-ng-init="find()">
+  <ul class="things unstyled">
+  <google-map center=map.center zoom=map.zoom>
+            <markers models="locations" coords="'self'" icon="'icon'" click="'onClicked'" fit='true'
+                     events="markersEvents">
+                <windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
+                    <p ng-non-bindable>This is an info window at {{ latitude | number:4 }}, {{ longitude | number:4 }}!</p>
+                </windows>
+            </markers>
+  </google-map>
+</section>

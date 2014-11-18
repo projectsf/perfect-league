@@ -1,0 +1,20 @@
+<section data-ng-controller="EventsController" data-ng-init="find()">
+  <input type="text" ng-model="nameFilter" placeholder="Events Filter"/>
+  <table class="things unstyled">
+    <thead>
+      <tr>
+        <td>Who</td>
+        <td>What</td>
+        <td>Where</td>
+        <td>When</td>
+    </thead>
+    <tbody>
+      <tr data-ng-repeat="event in events | filter: nameFilter">
+        <td>{{event.thingId}}</td>
+        <td>{{event.name}}</td>
+        <td>{{event.coords.latitude}},{{event.coords.longitude}}</td>
+        <td>{{event.created}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
