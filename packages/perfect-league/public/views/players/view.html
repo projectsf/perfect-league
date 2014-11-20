@@ -1,0 +1,14 @@
+<section data-ng-controller="ThingsController" data-ng-init="findOne()">
+    <span>{{thing.created | date:'medium'}}</span> /
+    <span>{{thing.user.name}}</span>
+    <h2>{{thing.title}}</h2>
+    <div data-ng-show="global.user._id == thing.user._id">
+        <a class="btn" href="/#!/things/{{thing._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+    <div>{{thing.content}}</div>
+</section>
