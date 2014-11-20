@@ -21,5 +21,5 @@ module.exports = function(Players, app, auth) {
         .delete(auth.requiresLogin, hasAuthorization, players.destroy);
 
     // Finish with setting up the playerId param
-    app.param('playerId', players.thing);
+    app.param('playerId', players.player);
 };

@@ -5,7 +5,7 @@
  */
 var Module = require('meanio').Module;
 
-var PerfectLeague = new Module('PerfectLeague');
+var PerfectLeague = new Module('perfectleague');
 
 /*
  * All MEAN packages require registration
@@ -20,6 +20,24 @@ PerfectLeague.register(function(app, auth, database) {
     PerfectLeague.menus.add({
         'roles': ['authenticated'],
         'title': 'Players',
+        'link': 'all players'
+    });
+
+    PerfectLeague.menus.add({
+        'roles': ['authenticated'],
+        'title': 'Schedule',
+        'link': 'all players'
+    });
+
+    PerfectLeague.menus.add({
+        'roles': ['authenticated'],
+        'title': 'Results',
+        'link': 'all players'
+    });
+
+    PerfectLeague.menus.add({
+        'roles': ['authenticated'],
+        'title': 'Messages',
         'link': 'all players'
     });
 
