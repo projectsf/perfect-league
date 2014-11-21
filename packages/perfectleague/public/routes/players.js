@@ -27,14 +27,14 @@ angular.module('mean').config(['$stateProvider',
         $stateProvider
             .state('all players', {
                 url: '/players',
-                templateUrl: 'players/views/list.html',
+                templateUrl: 'perfectleague/views/players/list.html',
                 resolve: {
                     loggedin: checkLoggedin
                 }
             })
             .state('player by id', {
                 url: '/players/:playerId',
-                templateUrl: 'players/views/players/view.html',
+                templateUrl: 'perfectleague/views/players/view.html',
                 resolve: {
                     loggedin: checkLoggedin
                 }
