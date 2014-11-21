@@ -1,11 +1,12 @@
 <section data-ng-controller="PlayersController" data-ng-init="find()">
-    <ul class="players unstyled">
-        <li data-ng-repeat="player in players">
-            <span>{{player.created | date:'medium'}}</span> /
-            <span>{{player.user.name}}</span>
-            <h2><a data-ng-href="#!/players/{{player._id}}">{{player.title}}</a></h2>
-            <div>{{player.content}}</div>
-        </li>
-    </ul>
-    <h1 data-ng-hide="!players || players.length">No players yet. <br> Why don't you <a href="/#!/players/create">Create One</a>?</h1>
+  <input type="text" ng-model="nameFilter" placeholder="Filter"/>
+  <h2> Players </h2>
+  <table class="perfectleague unstyled">
+    <tbody>
+      <tr data-ng-repeat="player in players| filter: nameFilter">
+        <td>{{player.firstName}}</td>
+        <td>{{player.lastName}}</td>
+      </tr>
+    </tbody>
+  </table>
 </section>

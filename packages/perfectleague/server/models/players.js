@@ -15,28 +15,24 @@ var PlayerSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    title: {
+    firstName: {
         type: String,
         default: '',
         trim: true
     },
-    content: {
+    lastName: {
         type: String,
         default: '',
         trim: true
     },
-    user: {
-        type: Schema.ObjectId,
-        ref: 'User'
-    }
 });
 
 /**
  * Validations
  */
-PlayerSchema.path('title').validate(function(title) {
-    return title.length;
-}, 'Title cannot be blank');
+PlayerSchema.path('lastName').validate(function(lastName) {
+    return lastName.length;
+}, 'Last name cannot be blank');
 
 /**
  * Statics

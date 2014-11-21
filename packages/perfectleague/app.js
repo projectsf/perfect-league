@@ -61,7 +61,7 @@ PerfectLeague.register(function(app, auth, database) {
     });
     */
     //PerfectLeague.angularDependencies(['google-maps']);
-    PerfectLeague.aggregateAsset('css', 'perfect-league.css');
+    PerfectLeague.aggregateAsset('css', 'perfectleague.css');
 
 
     return PerfectLeague;
