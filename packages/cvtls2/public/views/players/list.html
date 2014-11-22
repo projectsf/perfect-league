@@ -1,0 +1,12 @@
+<section data-ng-controller="PlayersController" data-ng-init="find()">
+  <input type="text" ng-model="nameFilter" placeholder="Filter"/>
+  <h2> Players </h2>
+  <table class="perfectleague unstyled">
+    <tbody>
+      <tr data-ng-repeat="player in players| filter: nameFilter">
+        <td>{{player.firstName}}</td>
+        <td>{{player.lastName}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
