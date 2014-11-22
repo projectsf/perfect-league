@@ -175,7 +175,7 @@ function writeMatchesToDb() {
 		{
 			var match = new Match();
 			match.roundNumber = season.matches[ii].roundNumber;
-			match.matchNumberr = season.matches[ii].matchNumber;
+			match.matchNumber = season.matches[ii].matchNumber;
 			match.players.playerOne.firstName  = season.matches[ii].players[0].firstName;
 			match.players.playerOne.lastName  = season.matches[ii].players[0].lastName;
 			match.players.playerTwo.firstName  = season.matches[ii].players[1].firstName;
@@ -224,5 +224,5 @@ var playersToPrint = [
 //print out season schedule for players starting at firstRound for players
 season.printSchedule(players);
 
-//writePlayersToDb(players);
-writeMatchesToDb();
+writePlayersToDb(players);
+//writeMatchesToDb();

@@ -26,19 +26,19 @@ CvtlS2.register(function(app, auth, database) {
     CvtlS2.menus.add({
         'roles': ['authenticated'],
         'title': 'Schedule',
-        'link': 'all players'
+        'link': 'all matches'
     });
 
     CvtlS2.menus.add({
         'roles': ['authenticated'],
-        'title': 'Results',
-        'link': 'all players'
+        'title': 'Standings',
+        'link': 'all standings'
     });
 
     CvtlS2.menus.add({
         'roles': ['authenticated'],
         'title': 'Messages',
-        'link': 'all players'
+        'link': 'all messages'
     });
 
 

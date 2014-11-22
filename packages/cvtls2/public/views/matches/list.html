@@ -1,0 +1,19 @@
+<section data-ng-controller="MatchesController" data-ng-init="find()">
+	<input type="text" ng-model="nameFilter" placeholder="Filter"/>
+	<table class="cvtls2 unstyled">
+		<tbody>
+			<thead>
+				<tr>
+					<td>Round #</td>
+					<td>Match #</td>
+					<td>Pairing</td>
+				</tr>
+			</thead>
+		<tr data-ng-repeat="match in matches| filter: nameFilter">
+			<td>{{match.roundNumber}}</td>
+			<td>{{match.matchNumber}}</td>
+			<td>{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}} </td>
+		</tr>
+		</tbody>
+	</table>
+</section>

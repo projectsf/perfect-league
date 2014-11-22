@@ -4,8 +4,7 @@
   <table class="perfectleague unstyled">
     <tbody>
       <tr data-ng-repeat="player in players| filter: nameFilter">
-        <td>{{player.firstName}}</td>
-        <td>{{player.lastName}}</td>
+        <td>{{player.firstName}} {{player.lastName}}</td>
       </tr>
     </tbody>
   </table>
