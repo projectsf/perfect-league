@@ -23,32 +23,25 @@ var Player = function Player(firstName, lastName) {
 	this.lastName = lastName;
 }
 
-var Match = function Match(matchNumber, players) {
+var Match = function Match(roundNumber, matchNumber, players) {
+	this.roundNumber = roundNumber;
 	this.matchNumber = matchNumber;
 	this.players = players;
 };
 
-var Round = function Round(roundNumber) {
-	this.roundNumber = roundNumber;
-	this.matches = [];
-};
 
 var Season = function Season(leagueName, seasonNumber) {
 	this.leagueName = leagueName;
 	this.seasonNumber= seasonNumber;
-	this.rounds = [];
+	this.matches = [];
 };
 
 Season.prototype.matchAlreadyScheduled = function(players) {
 	var sameMatchFound = false;
 	//walk rounds
-	for (ii = 0; ii < season.rounds; ++ii) {
-	
-		//walk matches
-		for (jj = 0; jj < season.rounds[0].matches.length; ++jj) {
-			if (match[jj].players == players) {
-				break;
-			}
+	for (ii = 0; ii < season.matches; ++ii) {
+		if (match[ii].players == players) {
+			break;
 		}
 	}
 	return sameMatchFound;
@@ -58,7 +51,6 @@ Season.prototype.generateSchedule = function(players, numberRounds) {
 	
 	//generate schedule for each round
 	for (var ii = 0; ii < numberRounds; ++ii) {
-		var round = new Round(ii);
 
 		//capture matches scheduled for this round 
 		var playersScheduledForThisRound = [];
@@ -71,7 +63,7 @@ Season.prototype.generateSchedule = function(players, numberRounds) {
 			var firstIndex = 0;
 			do {
 				firstIndex = Math.floor(random() * players.length);
-				//console.log("jj: " + jj + " firstIndex: " + firstIndex);
+				console.log("jj: " + jj + " firstIndex: " + firstIndex);
 			} while (playersScheduledForThisRound.indexOf(firstIndex) != -1);
 
 			//add to already scheduled for this interval list
@@ -81,7 +73,7 @@ Season.prototype.generateSchedule = function(players, numberRounds) {
 			var secondIndex = 0;
 			do {
 				secondIndex = Math.floor(random() * players.length);
-				//console.log("First Index: " + firstIndex + " SecondIndex: " + secondIndex);
+				console.log("First Index: " + firstIndex + " SecondIndex: " + secondIndex);
 			} while ((playersScheduledForThisRound.indexOf(secondIndex) != -1) || ( this.matchAlreadyScheduled() ) || (firstIndex == secondIndex));
 
 
@@ -89,44 +81,36 @@ Season.prototype.generateSchedule = function(players, numberRounds) {
 			playersScheduledForThisRound.push(secondIndex);
 
 			//update schedule schedules
-			round.matches.push(new Match((ii+1), [players[firstIndex], players[secondIndex]]));
-			
+			this.matches.push(new Match((ii+1),(jj+1),[players[firstIndex], players[secondIndex]]));
 
-			//log results to console
 		}
-		
-		//update rounds
-		this.rounds.push(round);
 	}
 };
 
 Season.prototype.printSchedule = function(players) {
 	console.log(this.leagueName + " Season " + this.seasonNumber + " Schedule");
 	
-	//walk rounds
-	for (var ii = 0; ii < this.rounds.length; ++ii) {
+	//walk matches 
+	for (var ii = 0; ii < this.matches.length; ++ii) {
 	
-		//walk matches
-		for (var jj = 0; jj < this.rounds[0].matches.length; ++jj) {
-		
-			var matchAlreadyPrintedForThisRound = [];
+			var matchAlreadyPrinted = [];
 		
 			//walk players passed in
-			for (var kk = 0; kk < players.length; ++kk) {
+			for (var jj = 0; jj < players.length; ++jj) {
 
-				if ( (this.rounds[ii].matches[jj].players.indexOf(players[kk]) != -1) & (matchAlreadyPrintedForThisRound.indexOf(jj) == -1) ) {
+				//if player in this match is in input player list print unless already printed this player for this round
+				if ( (this.matches[ii].players.indexOf(players[jj]) != -1) & (matchAlreadyPrinted.indexOf(ii) == -1) ) {
 
-					console.log("Round: " + (ii+1) + ", Match " + (jj+1) + " : " + this.rounds[ii].matches[jj].players[0].firstName + " vs " + this.rounds[ii].matches[jj].players[1].firstName);
-					matchAlreadyPrintedForThisRound.push(jj);
+					console.log("Round: " + this.matches[ii].roundNumber + ", Match " + this.matches[ii].matchNumber + " : " + this.matches[ii].players[0].firstName + " vs " + this.matches[ii].players[1].firstName);
+					matchAlreadyPrinted.push(ii);
 				}
 			}
-		}
 	}
 };
 
 function writePlayersToDb(players) {
 	var mongoose = require('mongoose');
-	mongoose.connect('mongodb://localhost/mean-dev1');
+	mongoose.connect('mongodb://localhost/cvtl-s2-dev');
 
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
@@ -156,7 +140,54 @@ function writePlayersToDb(players) {
 	})
 
 	console.log("finished writing to db");
+}
 
+function writeMatchesToDb() {
+	var mongoose = require('mongoose');
+	mongoose.connect('mongodb://localhost/cvtl-s2-dev');
+
+	var db = mongoose.connection;
+	db.on('error', console.error.bind(console, 'connection error:'));
+	db.once('open', function callback () {
+		console.log("connected to db");
+
+		var MatchSchema = mongoose.Schema(
+		{
+			roundNumber : { type : String },
+			matchNumber : { type : String },
+			matchType : { type : String },
+			players : { 
+				playerOne : { 
+					firstName : { type : String },
+					lastName : { type : String }
+				},
+				playerTwo : { 
+					firstName : { type : String },
+					lastName : { type : String }
+				}
+			}
+  		});
+
+  		//model class
+  		var Match = mongoose.model('Match', MatchSchema);
+
+		for (var ii = 0; ii < season.matches.length; ++ii)
+		{
+			var match = new Match();
+			match.roundNumber = season.matches[ii].roundNumber;
+			match.matchNumberr = season.matches[ii].matchNumber;
+			match.players.playerOne.firstName  = season.matches[ii].players[0].firstName;
+			match.players.playerOne.lastName  = season.matches[ii].players[0].lastName;
+			match.players.playerTwo.firstName  = season.matches[ii].players[1].firstName;
+			match.players.playerTwo.lastName  = season.matches[ii].players[1].lastName;
+			match.save(function (err) {
+				if (err)
+					return console.error(err, match);
+			})
+		}
+	})
+
+	console.log("finished writing to db");
 }
 
 //create season object
@@ -193,4 +224,5 @@ var playersToPrint = [
 //print out season schedule for players starting at firstRound for players
 season.printSchedule(players);
 
-writePlayersToDb(players);
+//writePlayersToDb(players);
+writeMatchesToDb();
