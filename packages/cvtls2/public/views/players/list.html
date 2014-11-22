@@ -1,11 +1,19 @@
 <section data-ng-controller="PlayersController" data-ng-init="find()">
-  <input type="text" ng-model="nameFilter" placeholder="Filter"/>
-  <h2> Players </h2>
-  <table class="perfectleague unstyled">
-    <tbody>
-      <tr data-ng-repeat="player in players| filter: nameFilter">
-        <td>{{player.firstName}} {{player.lastName}}</td>
-      </tr>
-    </tbody>
-  </table>
+	<h3><center>Singles Rankings</center></h3>
+	<table class="center">
+		<thead>
+			<tr>
+				<td>Rank</td>
+				<td>Player</td>
+				<td>Points</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="player in players| filter: nameFilter">
+				<td> N/A </td>
+            			<td><a data-ng-href="#!/players/{{player._id}}">{{player.firstName}} {{player.lastName}}</a></td>
+				<td> 0 </td>
+			</tr>
+		</tbody>
+	</table>
 </section>

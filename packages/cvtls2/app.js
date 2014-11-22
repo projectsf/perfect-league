@@ -19,20 +19,14 @@ CvtlS2.register(function(app, auth, database) {
     //We are adding a link to the main menu for all authenticated users
     CvtlS2.menus.add({
         'roles': ['authenticated'],
-        'title': 'Players',
-        'link': 'all players'
-    });
-
-    CvtlS2.menus.add({
-        'roles': ['authenticated'],
         'title': 'Schedule',
         'link': 'all matches'
     });
 
     CvtlS2.menus.add({
         'roles': ['authenticated'],
-        'title': 'Standings',
-        'link': 'all standings'
+        'title': 'Rankings',
+        'link': 'all players'
     });
 
     CvtlS2.menus.add({

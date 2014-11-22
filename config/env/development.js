@@ -7,7 +7,7 @@ module.exports = {
     debug: false
   },
   app: {
-    name: 'MEAN - FullStack JS - Development'
+    name: 'CVTL - S2 - Development'
   },
   facebook: {
     clientID: 'DEFAULT_APP_ID',
