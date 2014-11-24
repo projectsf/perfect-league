@@ -2,9 +2,8 @@
 	background-color: purple
 }
 
-table, tr, td {
+table, tr, td, th {
         padding:10px 25px 10px;
-        border: 1px solid black;
 }
 table
 {
@@ -15,4 +14,17 @@ table.center
 {
 	margin-left:auto;
 	margin-right:auto;
+}
+
+table#scheduleTable tr:nth-child(even) {
+    background-color: #eee;
+}
+table#scheduleTable tr:nth-child(odd) {
+    background-color: #fff;
+}
+table#scheduleTable th {
+    color: white;
+    background-color: black;
+    margin-left:auto;
+    margin-right:auto:
 }

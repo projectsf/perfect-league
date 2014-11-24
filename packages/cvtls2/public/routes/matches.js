@@ -32,6 +32,13 @@ angular.module('mean').config(['$stateProvider',
                     loggedin: checkLoggedin
                 }
             })
+            .state('post match result', {
+                url: '/matches/:matchId/post-result',
+                templateUrl: 'cvtls2/views/matches/post-result.html',
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
             .state('match by id', {
                 url: '/matches/:matchId',
                 templateUrl: 'cvtls2/views/matches/view.html',

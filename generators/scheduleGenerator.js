@@ -165,6 +165,18 @@ function writeMatchesToDb() {
 					firstName : { type : String },
 					lastName : { type : String }
 				}
+			},
+			result : { 
+				playerOne : { 
+					setOne: { type : Number},
+					setTwo: { type : Number},
+					setThree: { type : Number}
+				},
+				playerTwo : { 
+					setOne: { type : Number},
+					setTwo: { type : Number},
+					setThree: { type : Number}
+				}
 			}
   		});
 
@@ -180,6 +192,14 @@ function writeMatchesToDb() {
 			match.players.playerOne.lastName  = season.matches[ii].players[0].lastName;
 			match.players.playerTwo.firstName  = season.matches[ii].players[1].firstName;
 			match.players.playerTwo.lastName  = season.matches[ii].players[1].lastName;
+
+			//initialize results to 0
+			match.result.playerOne.setOne  = 1;
+			match.result.playerOne.setTwo  = 2;
+			match.result.playerOne.setThree  = 3;
+			match.result.playerTwo.setOne  = 5;
+			match.result.playerTwo.setTwo  = 5;
+			match.result.playerTwo.setThree  = 4;
 			match.save(function (err) {
 				if (err)
 					return console.error(err, match);
@@ -225,4 +245,4 @@ var playersToPrint = [
 season.printSchedule(players);
 
 writePlayersToDb(players);
-//writeMatchesToDb();
+writeMatchesToDb();

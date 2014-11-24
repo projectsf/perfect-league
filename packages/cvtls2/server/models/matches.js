@@ -22,6 +22,19 @@ var MatchSchema = new Schema({
 			firstName : { type: String },
 			lastName : { type: String }
 		}
+	},
+	result : {
+		playerOne : {
+			setOne: { type: Number},
+			setTwo: { type: Number},
+			setThree: { type: Number}
+		},
+		playerTwo : {
+			setOne: { type: Number},
+			setTwo: { type: Number},
+			setThree: { type: Number}
+		}
+		
 	}
 });
 

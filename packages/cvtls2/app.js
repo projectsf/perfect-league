@@ -29,12 +29,6 @@ CvtlS2.register(function(app, auth, database) {
         'link': 'all players'
     });
 
-    CvtlS2.menus.add({
-        'roles': ['authenticated'],
-        'title': 'Messages',
-        'link': 'all messages'
-    });
-
 
     /*
     //Uncomment to use. Requires meanio@0.3.7 or above
