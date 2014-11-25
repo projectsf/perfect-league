@@ -2,14 +2,6 @@
 
 var matches = require('../controllers/matches');
 
-// Match authorization helpers
-var hasAuthorization = function(req, res, next) {
-    if (req.match.user.id !== req.user.id) {
-        return res.send(401, 'User is not authorized');
-    }
-    next();
-};
-
 module.exports = function(Matches, app, auth) {
     
     app.route('/matches')
@@ -17,8 +9,10 @@ module.exports = function(Matches, app, auth) {
         .post(auth.requiresLogin, matches.create);
     app.route('/matches/:matchId')
         .get(matches.show)
-        .put(auth.requiresLogin, hasAuthorization, matches.update)
-        .delete(auth.requiresLogin, hasAuthorization, matches.destroy);
+        .put(auth.requiresLogin, matches.update)
+        .delete(auth.requiresLogin, matches.destroy);
+    app.route('/matches/:matchId/post-result')
+        .put(auth.requiresLogin, matches.update);
 
     // Finish with setting up the matchId param
     app.param('matchId', matches.match);

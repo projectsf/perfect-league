@@ -37,10 +37,10 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
             if (!match.updated) {
                 match.updated = [];
             }
-            match.updated.push(new Date().getTime());
+            match.updated.push('blah blah blah value');
 
             match.$update(function() {
-                $location.path('matches/' + match._id);
+                $location.path('matches/' + match._id + '/post-result');
             });
         };
 

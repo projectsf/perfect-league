@@ -1,31 +1,10 @@
 <section data-ng-controller="MatchesController" data-ng-init="findOne()">
-        <div class="form-group">
-            <label mean-token="'post-result'" class="col-md-5 control-label">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}}</label>
-            <div class="col-md-1">
-                <input type="number" min="0" max="7" class="form-control" data-ng-model="match.result.playerOne.setOne" id="result-p1-s1"  required>
-            </div>
-            <div class="col-md-1">
-                <input type="number" min="0" max="7" class="form-control" data-ng-model="match.result.playerOne.setTwo" id="result-p1-s2"  required>
-            </div>
-            <div class="col-md-1">
-                <input type="number" min="0" max="7" class="form-control" data-ng-model="match.result.playerOne.setThree" id="result-p1-s3" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <label mean-token="'post-result'" class="col-md-5 control-label">{{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</label>
-            <div class="col-md-1">
-                <input type="number" min="0" max="7" class="form-control" data-ng-model="match.result.playerTwo.setOne" id="result-p2-s1"  required>
-            </div>
-            <div class="col-md-1">
-                <input type="number" min="0" max="7" class="form-control" data-ng-model="match.result.playerTwo.setTwo" id="result-p2-s2"  required>
-            </div>
-            <div class="col-md-1">
-                <input type="number" min="0" max="7" class="form-control" data-ng-model="match.result.playerTwo.setThree" id="result-p2-s3" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-3 col-md-9">
-                <button type="submit" class="btn btn-info">Submit</button>
-            </div>
-        </div>
+	<div class="form-group">
+	<form data-ng-submit="update()" data-ng-controller="MatchesController"> 
+		<input type="number" min="0" max="7" data-ng-model="match.result.playerOne.setOne" id="result-p1-s1"  required>
+	</form>
+	<form data-ng-submit="update()" data-ng-controller="MatchesController"> 
+		<input type="number" min="0" max="7" data-ng-model="match.result.playerOne.setTwo" id="result-p1-s1"  required>
+	</form>
+	</div>
 </section>

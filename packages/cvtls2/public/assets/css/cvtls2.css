@@ -16,15 +16,15 @@ table.center
 	margin-right:auto;
 }
 
-table#scheduleTable tr:nth-child(even) {
+table tr:nth-child(even) {
     background-color: #eee;
 }
-table#scheduleTable tr:nth-child(odd) {
+table tr:nth-child(odd) {
     background-color: #fff;
 }
-table#scheduleTable th {
+table th {
     color: white;
     background-color: black;
     margin-left:auto;
-    margin-right:auto:
+    margin-right:auto;
 }
