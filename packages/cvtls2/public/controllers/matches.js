@@ -20,8 +20,8 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
                 $scope.matches = matches;
 		$scope.roundOneMatches = [];
 		$scope.roundTwoMatches = [];
-		for (var ii = 0 ; ii < matches.length; ++ii) {
-			if (matches[ii].roundNumber == 1) {
+		for (var ii = 0 ; ii < matches.length; ii=ii+1) {
+			if (matches[ii].roundNumber === 1) {
 				$scope.roundOneMatches.push(matches[ii]);
 			}
 			else {

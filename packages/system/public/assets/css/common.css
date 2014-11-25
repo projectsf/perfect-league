@@ -46,3 +46,9 @@ footer p {
 /*.ng-valid.ng-dirty{*/
     /*border-color:#78FA89;*/
 /*}*/
+
+img.home-image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
