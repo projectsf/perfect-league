@@ -63,7 +63,6 @@ Season.prototype.generateSchedule = function(players, numberRounds) {
 			var firstIndex = 0;
 			do {
 				firstIndex = Math.floor(random() * players.length);
-				console.log("jj: " + jj + " firstIndex: " + firstIndex);
 			} while (playersScheduledForThisRound.indexOf(firstIndex) != -1);
 
 			//add to already scheduled for this interval list
@@ -73,7 +72,6 @@ Season.prototype.generateSchedule = function(players, numberRounds) {
 			var secondIndex = 0;
 			do {
 				secondIndex = Math.floor(random() * players.length);
-				console.log("First Index: " + firstIndex + " SecondIndex: " + secondIndex);
 			} while ((playersScheduledForThisRound.indexOf(secondIndex) != -1) || ( this.matchAlreadyScheduled() ) || (firstIndex == secondIndex));
 
 
@@ -111,7 +109,7 @@ Season.prototype.printSchedule = function(players) {
 function writePlayersToDb(players) {
 	var mongoose = require('mongoose');
 	//mongoose.connect('mongodb://localhost/cvtl-s2-dev');
-	mongoose.connect('mongodb://scott.maroney@gmail.com:kilgore-h>@dogen.mongohq.com:10098/app31833277');
+	mongoose.connect('mongodb://heroku:fdBvxtIi461oxam5jdXgE0sN6HhHmprftJhxT0nTInwL71ScQuTKnoVQssr7O0yg8tFyDpot76Sh8Zs4yrJIKQ@dogen.mongohq.com:10098/app31833277');
 
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
@@ -146,7 +144,7 @@ function writePlayersToDb(players) {
 function writeMatchesToDb() {
 	var mongoose = require('mongoose');
 	//mongoose.connect('mongodb://localhost/cvtl-s2-dev');
-	mongoose.connect('mongodb://scott.maroney@gmail.com:kilgore-h>@dogen.mongohq.com:10098/app31833277');
+	mongoose.connect('mongodb://heroku:fdBvxtIi461oxam5jdXgE0sN6HhHmprftJhxT0nTInwL71ScQuTKnoVQssr7O0yg8tFyDpot76Sh8Zs4yrJIKQ@dogen.mongohq.com:10098/app31833277');
 
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));

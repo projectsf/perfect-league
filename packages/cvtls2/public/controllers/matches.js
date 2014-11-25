@@ -19,12 +19,14 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
             Matches.query(function(matches) {
                 $scope.matches = matches;
 		$scope.roundOneMatches = [];
-		for (var ii = 0 ; ii < 7; ++ii) {
-			$scope.roundOneMatches.push(matches[ii]);
-		}
 		$scope.roundTwoMatches = [];
-		for (var ii = 0 ; ii < 7; ++ii) {
-			$scope.roundTwoMatches.push(matches[ii+7]);
+		for (var ii = 0 ; ii < matches.length; ++ii) {
+			if (matches[ii].roundNumber == 1) {
+				$scope.roundOneMatches.push(matches[ii]);
+			}
+			else {
+				$scope.roundTwoMatches.push(matches[ii]);
+			}
 		}
             });
         };
