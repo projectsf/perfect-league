@@ -110,7 +110,8 @@ Season.prototype.printSchedule = function(players) {
 
 function writePlayersToDb(players) {
 	var mongoose = require('mongoose');
-	mongoose.connect('mongodb://localhost/cvtl-s2-dev');
+	//mongoose.connect('mongodb://localhost/cvtl-s2-dev');
+	mongoose.connect('mongodb://scott.maroney@gmail.com:kilgore-h>@dogen.mongohq.com:10098/app31833277');
 
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
@@ -144,7 +145,8 @@ function writePlayersToDb(players) {
 
 function writeMatchesToDb() {
 	var mongoose = require('mongoose');
-	mongoose.connect('mongodb://localhost/cvtl-s2-dev');
+	//mongoose.connect('mongodb://localhost/cvtl-s2-dev');
+	mongoose.connect('mongodb://scott.maroney@gmail.com:kilgore-h>@dogen.mongohq.com:10098/app31833277');
 
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
@@ -227,7 +229,7 @@ var players = [
 	new Player("Andrew", "Young"),
 	new Player("Katherine", "Rutledge"),
 	new Player("Josh", "McHugh"),
-	new Player("Jaren", "Vermeli"),
+	new Player("Jared", "Vermeil"),
 	new Player("Doug", "Anderson")
 ];
 
