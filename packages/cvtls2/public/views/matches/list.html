@@ -4,7 +4,17 @@
 			<th>Round 1</th>
 		</thead>
 		<tbody>
-			<tr data-ng-repeat="match in matches">
+			<tr data-ng-repeat="match in roundOneMatches">
+				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<table class="cvtls2 center" id="scheduleTable">
+		<thead>
+			<th>Round 2</th>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="match in roundTwoMatches">
 				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
 			</tr>
 		</tbody>

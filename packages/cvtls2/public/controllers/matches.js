@@ -17,7 +17,15 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
 
         $scope.find = function() {
             Matches.query(function(matches) {
-                $scope.matches= matches;
+                $scope.matches = matches;
+		$scope.roundOneMatches = [];
+		for (var ii = 0 ; ii < 7; ++ii) {
+			$scope.roundOneMatches.push(matches[ii]);
+		}
+		$scope.roundTwoMatches = [];
+		for (var ii = 0 ; ii < 7; ++ii) {
+			$scope.roundTwoMatches.push(matches[ii+7]);
+		}
             });
         };
 
