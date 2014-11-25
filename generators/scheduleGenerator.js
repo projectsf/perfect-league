@@ -194,12 +194,12 @@ function writeMatchesToDb() {
 			match.players.playerTwo.lastName  = season.matches[ii].players[1].lastName;
 
 			//initialize results to 0
-			match.result.playerOne.setOne  = 1;
-			match.result.playerOne.setTwo  = 2;
-			match.result.playerOne.setThree  = 3;
-			match.result.playerTwo.setOne  = 5;
-			match.result.playerTwo.setTwo  = 5;
-			match.result.playerTwo.setThree  = 4;
+			match.result.playerOne.setOne  = 0;
+			match.result.playerOne.setTwo  = 0;
+			match.result.playerOne.setThree  = 0;
+			match.result.playerTwo.setOne  = 0;
+			match.result.playerTwo.setTwo  = 0;
+			match.result.playerTwo.setThree  = 0;
 			match.save(function (err) {
 				if (err)
 					return console.error(err, match);
