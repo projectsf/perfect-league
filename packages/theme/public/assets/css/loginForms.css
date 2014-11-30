@@ -270,13 +270,11 @@ background: url("/theme/assets/img/bg.png");
 .login-form__center {
     height: 100%;
     float: left;
-    background: url("/theme/assets/img/devide_line.png") no-repeat 50% 30%;
     padding: 0 10px;
 }
 
 .register-form .login-form__center {
     margin-top: 38px;
-    background: url("/theme/assets/img/devide_line_long.png") no-repeat 50% 0;
 }
 
 .login-form__center p {
