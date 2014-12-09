@@ -14,6 +14,10 @@ angular.module('mean').controller('PlayersController', ['$scope', '$stateParams'
 					$scope.players[ii].points = 3;
 					$scope.players[ii].ranking = 1;
 				}
+				if($scope.players[ii].firstName === 'James') {
+					$scope.players[ii].points = 3;
+					$scope.players[ii].ranking = 1;
+				}
 			}
 			});
 		};
