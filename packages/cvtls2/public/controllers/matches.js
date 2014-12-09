@@ -3,6 +3,7 @@
 angular.module('mean').controller('MatchesController', ['$scope', '$stateParams', '$location', 'Global', 'Matches',
     function($scope, $stateParams, $location, Global, Matches) {
         $scope.global = Global;
+        $scope.matchScoreUpdated = false;
 
         $scope.update = function() {
             var match = $scope.match;
@@ -13,6 +14,8 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
             match.$update(function() {
                 $location.path('matches/' + match._id + '/post-result');
             });
+
+            $scope.matchScoreUpdated = true;
         };
 
         $scope.find = function() {
