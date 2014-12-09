@@ -9,7 +9,7 @@ angular.module('mean').controller('PlayersController', ['$scope', '$stateParams'
 			$scope.players= players;
 			for( var ii=0; ii < $scope.players.length; ii=ii+1) {
 				$scope.players[ii].points = 0;
-				$scope.players[ii].ranking = 2;
+				$scope.players[ii].ranking = 3;
 				if($scope.players[ii].firstName === 'Doug') {
 					$scope.players[ii].points = 3;
 					$scope.players[ii].ranking = 1;
