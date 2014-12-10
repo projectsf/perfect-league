@@ -9,7 +9,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr data-ng-repeat="player in players | orderBy:'points':true">
+			<tr data-ng-repeat="player in players | orderBy:'ranking'">
 				<td> {{player.ranking}} </td>
             			<td><a data-ng-href="#!/players/{{player._id}}">{{player.firstName}} {{player.lastName}}</a></td>
 				<td> {{player.points}} </td>

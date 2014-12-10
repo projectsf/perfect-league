@@ -85,21 +85,28 @@ angular.module('mean').controller('PlayersController', ['$scope', '$stateParams'
 				}
 
 				//now for rankings
-				//sort array of players local scope
+				//sort array of players local scope.  result will be ascending order
 				$scope.players.sort(function(a, b) {
-					return a.points > b.points;
+					if (a.points > b.points) {
+						return 1;
+					} else if (a.points < b.points) {
+						return -1;
+					} else if (a.points === b.points) {
+						return 0;
+					}
 				});
 
 
+				//initialize using highest point total (index 0 of sorted players)
+				var currentRanking = 1;
 				var currentPoints = $scope.players[$scope.players.length-1].points;
-				var currentRanking= 1;
-				$scope.players[$scope.players.length-1].ranking = 1;
+
 				for (var kk = $scope.players.length-1; kk >= 0; kk -= 1) {
 					if ($scope.players[kk].points < currentPoints) {
 						currentRanking +=1;
+						currentPoints = $scope.players[kk].points;
 					}
 					$scope.players[kk].ranking = currentRanking;
-					currentPoints = $scope.players[kk].points;
 				}
 			});
 		});
