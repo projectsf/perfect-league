@@ -6,19 +6,22 @@ angular.module('mean').controller('PlayersController', ['$scope', '$stateParams'
 
 		$scope.find = function() {
 			Players.query(function(players) {
-			$scope.players= players;
-			for( var ii=0; ii < $scope.players.length; ii=ii+1) {
-				$scope.players[ii].points = 0;
-				$scope.players[ii].ranking = 3;
-				if($scope.players[ii].firstName === 'Doug') {
-					$scope.players[ii].points = 3;
-					$scope.players[ii].ranking = 1;
+				$scope.players = players;
+				for (var ii=0; ii < $scope.players.length; ii=ii+1) {
+					$scope.players[ii].points = 0;
+					$scope.players[ii].ranking = 3;
+
+					//hard code some points and rankings for now
+					if($scope.players[ii].firstName === 'Doug') {
+						$scope.players[ii].points = 3;
+						$scope.players[ii].ranking = 1;
+					}
+
+					if($scope.players[ii].firstName === 'James') {
+						$scope.players[ii].points = 3;
+						$scope.players[ii].ranking = 1;
+					}
 				}
-				if($scope.players[ii].firstName === 'James') {
-					$scope.players[ii].points = 3;
-					$scope.players[ii].ranking = 1;
-				}
-			}
 			});
 		};
 
