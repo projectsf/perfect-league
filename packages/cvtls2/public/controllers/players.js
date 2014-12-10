@@ -4,26 +4,88 @@ angular.module('mean').controller('PlayersController', ['$scope', '$stateParams'
 	function($scope, $stateParams, $location, Global, Players, Matches) {
 		$scope.global = Global;
 
-		$scope.find = function() {
-			Players.query(function(players) {
-				$scope.players = players;
-				for (var ii=0; ii < $scope.players.length; ii=ii+1) {
+	$scope.find = function() {
+		Players.query(function(players) {
+			$scope.players = players;
+			Matches.query(function(matches) {
+				$scope.matches = matches;
+					
+				for (var ii = 0; ii < $scope.players.length; ii += 1) {
 					$scope.players[ii].points = 0;
-					$scope.players[ii].ranking = 3;
 
-					//hard code some points and rankings for now
-					if($scope.players[ii].firstName === 'Doug') {
-						$scope.players[ii].points = 3;
-						$scope.players[ii].ranking = 1;
-					}
+					//walk matches looking for player 
+					for (var jj = 0; jj < $scope.matches.length; jj += 1) {
+						var playerIndex = -1; 
+						if (($scope.matches[jj].players.playerOne.firstName === $scope.players[ii].firstName) && ($scope.matches[jj].players.playerOne.lastName === $scope.players[ii].lastName)) {
+							playerIndex = 0;
+						}
+						else if (($scope.matches[jj].players.playerTwo.firstName === $scope.players[ii].firstName) && ($scope.matches[jj].players.playerTwo.lastName === $scope.players[ii].lastName)) {
+							playerIndex = 1;
+						}
+						if (playerIndex !== -1) {
 
-					if($scope.players[ii].firstName === 'James') {
-						$scope.players[ii].points = 3;
-						$scope.players[ii].ranking = 1;
+							// found match that player played in
+							var setsWon = 0;
+							var setsLost = 0;
+
+							// is player is player one of match
+							if (playerIndex === 0) {
+								if ($scope.matches[jj].result.playerOne.setOne > $scope.matches[jj].result.playerTwo.setOne) {
+									setsWon += 1;
+								}
+								if ($scope.matches[jj].result.playerOne.setOne < $scope.matches[jj].result.playerTwo.setOne) {
+									setsLost += 1;
+								}
+								if ($scope.matches[jj].result.playerOne.setTwo > $scope.matches[jj].result.playerTwo.setTwo) {
+									setsWon += 1;
+								}
+								if ($scope.matches[jj].result.playerOne.setTwo < $scope.matches[jj].result.playerTwo.setTwo) {
+									setsLost += 1;
+								}
+								if ($scope.matches[jj].result.playerOne.setThree > $scope.matches[jj].result.playerTwo.setThree) {
+									setsWon += 1;
+								}
+								if ($scope.matches[jj].result.playerOne.setThree < $scope.matches[jj].result.playerTwo.setThree) {
+									setsLost += 1;
+								}
+							}
+	
+							// player is player two of match
+							else if (playerIndex === 1) {
+								if ($scope.matches[jj].result.playerTwo.setOne > $scope.matches[jj].result.playerOne.setOne) {
+									setsWon += 1;
+								} 
+								if ($scope.matches[jj].result.playerTwo.setOne < $scope.matches[jj].result.playerOne.setOne) {
+									setsLost += 1;
+								}
+								if ($scope.matches[jj].result.playerTwo.setTwo > $scope.matches[jj].result.playerOne.setTwo) {
+									setsWon += 1;
+								} 
+								if ($scope.matches[jj].result.playerTwo.setTwo < $scope.matches[jj].result.playerOne.setTwo) {
+									setsLost += 1;
+								}
+								if ($scope.matches[jj].result.playerTwo.setThree > $scope.matches[jj].result.playerOne.setThree) {
+									setsWon += 1;
+								} 
+								if ($scope.matches[jj].result.playerTwo.setThree < $scope.matches[jj].result.playerOne.setThree) {
+									setsLost += 1;
+								}
+							}
+
+							// calculate points
+							if ((setsWon === 2) && (setsLost === 0)) {
+								$scope.players[ii].points += 3;
+							} else if ((setsWon === 2) && (setsLost === 1)) {
+								$scope.players[ii].points += 2;
+							} else if ((setsWon === 1) && (setsLost === 2)) {
+								$scope.players[ii].points += 1;
+							}
+						}
 					}
 				}
 			});
-		};
+		});
+	};
 
 		$scope.findOne = function() {
 			Players.get({ playerId: $stateParams.playerId }, function(player) {
