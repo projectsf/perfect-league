@@ -39,8 +39,9 @@ var Season = function Season(leagueName, seasonNumber) {
 Season.prototype.matchAlreadyScheduled = function(players) {
 	var sameMatchFound = false;
 	//walk rounds
-	for (ii = 0; ii < season.matches; ++ii) {
-		if (match[ii].players == players) {
+	for (ii = 0; ii < this.matches.length; ++ii) {
+		if ( (this.matches[ii].players[0] == players[0] && this.matches[ii].players[1] == players[1]) || (this.matches[ii].players[1] == players[0] && this.matches[ii].players[0] == players[1]) ) {
+			sameMatchFound = true;
 			break;
 		}
 	}
@@ -72,7 +73,7 @@ Season.prototype.generateSchedule = function(players, numberRounds) {
 			var secondIndex = 0;
 			do {
 				secondIndex = Math.floor(random() * players.length);
-			} while ((playersScheduledForThisRound.indexOf(secondIndex) != -1) || ( this.matchAlreadyScheduled() ) || (firstIndex == secondIndex));
+			} while ((playersScheduledForThisRound.indexOf(secondIndex) != -1) || ( this.matchAlreadyScheduled([players[firstIndex], players[secondIndex]]) ) || (firstIndex == secondIndex));
 
 
 			//add to already scheduled list
@@ -109,7 +110,7 @@ Season.prototype.printSchedule = function(players) {
 function writePlayersToDb(players) {
 	var mongoose = require('mongoose');
 	//mongoose.connect('mongodb://localhost/cvtl-s2-dev');
-	mongoose.connect('mongodb://heroku:fdBvxtIi461oxam5jdXgE0sN6HhHmprftJhxT0nTInwL71ScQuTKnoVQssr7O0yg8tFyDpot76Sh8Zs4yrJIKQ@dogen.mongohq.com:10098/app31833277');
+	//mongoose.connect('mongodb://heroku:fdBvxtIi461oxam5jdXgE0sN6HhHmprftJhxT0nTInwL71ScQuTKnoVQssr7O0yg8tFyDpot76Sh8Zs4yrJIKQ@dogen.mongohq.com:10098/app31833277');
 
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
@@ -144,7 +145,7 @@ function writePlayersToDb(players) {
 function writeMatchesToDb() {
 	var mongoose = require('mongoose');
 	//mongoose.connect('mongodb://localhost/cvtl-s2-dev');
-	mongoose.connect('mongodb://heroku:fdBvxtIi461oxam5jdXgE0sN6HhHmprftJhxT0nTInwL71ScQuTKnoVQssr7O0yg8tFyDpot76Sh8Zs4yrJIKQ@dogen.mongohq.com:10098/app31833277');
+	//mongoose.connect('mongodb://heroku:fdBvxtIi461oxam5jdXgE0sN6HhHmprftJhxT0nTInwL71ScQuTKnoVQssr7O0yg8tFyDpot76Sh8Zs4yrJIKQ@dogen.mongohq.com:10098/app31833277');
 
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
@@ -156,6 +157,7 @@ function writeMatchesToDb() {
 			roundNumber : { type : String },
 			matchNumber : { type : String },
 			matchType : { type : String },
+			expires : { type : Date },
 			players : { 
 				playerOne : { 
 					firstName : { type : String },
@@ -232,7 +234,7 @@ var players = [
 ];
 
 //generate schedule for number of rounds
-var numberRounds = 2;
+var numberRounds = 4;
 season.generateSchedule(players, numberRounds);
 
 var firstRound = 1;
@@ -244,5 +246,5 @@ var playersToPrint = [
 //print out season schedule for players starting at firstRound for players
 season.printSchedule(players);
 
-writePlayersToDb(players);
-writeMatchesToDb();
+//writePlayersToDb(players);
+//writeMatchesToDb();
