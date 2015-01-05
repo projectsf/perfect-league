@@ -23,12 +23,20 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
                 $scope.matches = matches;
 		$scope.roundOneMatches = [];
 		$scope.roundTwoMatches = [];
+		$scope.roundThreeMatches = [];
+		$scope.roundFourMatches = [];
 		for (var ii = 0 ; ii < matches.length; ii=ii+1) {
 			if (matches[ii].roundNumber === 1) {
 				$scope.roundOneMatches.push(matches[ii]);
 			}
-			else {
+			else if (matches[ii].roundNumber === 2) {
 				$scope.roundTwoMatches.push(matches[ii]);
+			}
+			else if (matches[ii].roundNumber === 3) {
+				$scope.roundThreeMatches.push(matches[ii]);
+			}
+			else if (matches[ii].roundNumber === 4) {
+				$scope.roundFourMatches.push(matches[ii]);
 			}
 		}
             });

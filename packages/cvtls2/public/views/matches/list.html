@@ -19,4 +19,24 @@
 			</tr>
 		</tbody>
 	</table>
+	<table class="cvtls2 center" id="scheduleTable">
+		<thead>
+			<th>Round 3</th>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="match in roundThreeMatches">
+				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<table class="cvtls2 center" id="scheduleTable">
+		<thead>
+			<th>Round 4</th>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="match in roundFourMatches">
+				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
+			</tr>
+		</tbody>
+	</table>
 </section>
