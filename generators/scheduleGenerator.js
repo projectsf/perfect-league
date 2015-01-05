@@ -190,6 +190,7 @@ function writeMatchesToDb() {
 			var match = new Match();
 			match.roundNumber = season.matches[ii].roundNumber;
 			match.matchNumber = season.matches[ii].matchNumber;
+			match.expires =  new Date('2015-02-02T00:00:00');
 			match.players.playerOne.firstName  = season.matches[ii].players[0].firstName;
 			match.players.playerOne.lastName  = season.matches[ii].players[0].lastName;
 			match.players.playerTwo.firstName  = season.matches[ii].players[1].firstName;
@@ -202,10 +203,13 @@ function writeMatchesToDb() {
 			match.result.playerTwo.setOne  = 0;
 			match.result.playerTwo.setTwo  = 0;
 			match.result.playerTwo.setThree  = 0;
-			match.save(function (err) {
-				if (err)
-					return console.error(err, match);
-			})
+			if (match.roundNumber > 2)
+			{
+				match.save(function (err) {
+					if (err)
+						return console.error(err, match);
+				})
+			}
 		}
 	})
 
@@ -247,4 +251,4 @@ var playersToPrint = [
 season.printSchedule(players);
 
 //writePlayersToDb(players);
-//writeMatchesToDb();
+writeMatchesToDb();
