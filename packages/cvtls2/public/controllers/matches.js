@@ -26,17 +26,31 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
 		$scope.roundThreeMatches = [];
 		$scope.roundFourMatches = [];
 		for (var ii = 0 ; ii < matches.length; ii=ii+1) {
-			if (matches[ii].roundNumber === 1) {
-				$scope.roundOneMatches.push(matches[ii]);
+			var match = matches[ii];
+
+			//generate status 
+			if ( (match.result.playerOne.setOne === 0) && (match.result.playerTwo.setOne === 0) ) {
+				match.status = 'Not Complete';
 			}
-			else if (matches[ii].roundNumber === 2) {
-				$scope.roundTwoMatches.push(matches[ii]);
+			else if ( (match.result.playerOne.setThree === 0) && (match.result.playerTwo.setThree === 0) ) {
+				match.status = match.result.playerOne.setOne.toString() + '-' + match.result.playerTwo.setOne.toString() + ' ' + match.result.playerOne.setTwo.toString() + '-' + match.result.playerTwo.setTwo.toString();
 			}
-			else if (matches[ii].roundNumber === 3) {
-				$scope.roundThreeMatches.push(matches[ii]);
+			else {
+			
+				match.status = match.result.playerOne.setOne.toString() + '-' + match.result.playerTwo.setOne.toString() + ' ' + match.result.playerOne.setTwo.toString() + '-' + match.result.playerTwo.setTwo.toString() + ' ' + match.result.playerOne.setThree.toString() + '-' + match.result.playerTwo.setThree.toString();
 			}
-			else if (matches[ii].roundNumber === 4) {
-				$scope.roundFourMatches.push(matches[ii]);
+
+			if (match.roundNumber === 1) {
+				$scope.roundOneMatches.push(match);
+			}
+			else if (match.roundNumber === 2) {
+				$scope.roundTwoMatches.push(match);
+			}
+			else if (match.roundNumber === 3) {
+				$scope.roundThreeMatches.push(match);
+			}
+			else if (match.roundNumber === 4) {
+				$scope.roundFourMatches.push(match);
 			}
 		}
             });
