@@ -32,7 +32,13 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
 
 			//generate status 
 			if ( (match.result.playerOne.setOne === 0) && (match.result.playerTwo.setOne === 0) ) {
-				match.status = 'Not Complete';
+				var now = new Date();
+				var expires = new Date(match.expires);
+				if ( now > expires ) {
+					match.status = 'Forfeit';
+				} else {
+					match.status = 'Not Complete';
+				}
 			}
 			else if ( (match.result.playerOne.setThree === 0) && (match.result.playerTwo.setThree === 0) ) {
 				match.status = match.result.playerOne.setOne.toString() + '-' + match.result.playerTwo.setOne.toString() + ' ' + match.result.playerOne.setTwo.toString() + '-' + match.result.playerTwo.setTwo.toString();

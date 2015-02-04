@@ -24,6 +24,7 @@ angular.module('mean').controller('PlayersController', ['$scope', '$stateParams'
 						}
 						if (playerIndex !== -1) {
 
+
 							// found match that player played in
 							var setsWon = 0;
 							var setsLost = 0;
@@ -72,8 +73,18 @@ angular.module('mean').controller('PlayersController', ['$scope', '$stateParams'
 								}
 							}
 
+
 							// calculate points
-							if ((setsWon === 2) && (setsLost === 0)) {
+
+							// check for unplayed expired match first
+							if ((setsWon === 0) && (setsLost === 0)) {
+								var now = new Date();
+								var expires = new Date($scope.matches[jj].expires);
+								if (now > expires) {
+									$scope.players[ii].points -= 2;
+								}
+
+							} else if ((setsWon === 2) && (setsLost === 0)) {
 								$scope.players[ii].points += 3;
 							} else if ((setsWon === 2) && (setsLost === 1)) {
 								$scope.players[ii].points += 2;
