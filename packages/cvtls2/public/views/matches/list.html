@@ -1,62 +1,32 @@
 <section data-ng-controller="MatchesController" data-ng-init="find()">
 	<table class="cvtls2 center" id="scheduleTable">
-		<thead>
-			<th colspan="2">Round 6</th>
-		</thead>
 		<tbody>
+			<th colspan="2">Round 6</th>
 			<tr data-ng-repeat="match in roundSixMatches">
 				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
 				<td>{{match.status}}</a></td>
 			</tr>
-		</tbody>
-	<table class="cvtls2 center" id="scheduleTable">
-		<thead>
 			<th colspan="2">Round 5</th>
-		</thead>
-		<tbody>
 			<tr data-ng-repeat="match in roundFiveMatches">
 				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
 				<td>{{match.status}}</a></td>
 			</tr>
-		</tbody>
-	<table class="cvtls2 center" id="scheduleTable">
-		<thead>
 			<th colspan="2">Round 4</th>
-		</thead>
-		<tbody>
 			<tr data-ng-repeat="match in roundFourMatches">
 				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
 				<td>{{match.status}}</a></td>
 			</tr>
-		</tbody>
-	</table>
-	<table class="cvtls2 center" id="scheduleTable">
-		<thead>
 			<th colspan="2">Round 3</th>
-		</thead>
-		<tbody>
 			<tr data-ng-repeat="match in roundThreeMatches">
 				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
 				<td>{{match.status}}</a></td>
 			</tr>
-		</tbody>
-	</table>
-	<table class="cvtls2 center" id="scheduleTable">
-		<thead>
 			<th colspan="2">Round 2</th>
-		</thead>
-		<tbody>
 			<tr data-ng-repeat="match in roundTwoMatches">
 				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
 				<td>{{match.status}}</a></td>
 			</tr>
-		</tbody>
-	</table>
-	<table class="cvtls2 center" id="scheduleTable">
-		<thead>
 			<th colspan="2">Round 1</th>
-		</thead>
-		<tbody>
 			<tr data-ng-repeat="match in roundOneMatches">
 				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
 				<td>{{match.status}}</a></td>
