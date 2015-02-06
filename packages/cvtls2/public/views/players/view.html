@@ -1,3 +1,33 @@
 <section data-ng-controller="PlayersController" data-ng-init="findOne()">
-    <h2>{{player.firstName}} {{player.lastName}}</h2>
+	<table class="cvtls2 center"  id="tPlayer">
+		<thead>
+			<th colspan="2">{{player.firstName}} {{player.lastName}}</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Current Ranking</td>
+				<td>{{ranking}}</td>
+			</tr>
+			<tr>
+				<td>Points</td>
+				<td>{{points}}</td>
+			</tr>
+			<tr>
+				<td>Matches Won / Lost</td>
+				<td>{{matchesWon}} / {{matchesLost}} </td>
+			</tr>
+			<tr>
+				<td>Sets Won / Lost</td>
+				<td> {{setsWon}} / {{setsLost}}</td>
+			</tr>
+			<tr>
+				<td>Games Won / Lost</td>
+				<td>{{gamesWon}} / {{gamesLost}}</td>
+			</tr>
+			<th colspan="3"> Match History </th>
+			<tr data-ng-repeat="match in matchHistory">
+				<td>{{match.opponent.firstName}} {{match.opponent.lastName}}</td>
+				<td>{{match.result}}</td>
+			</tr>
+		</tbody>
 </section>

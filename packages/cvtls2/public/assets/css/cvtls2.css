@@ -16,6 +16,17 @@ table.center
 	margin-right:auto;
 }
 
+
+table#tPlayer th {
+    color: white;
+    background-color: black;
+    text-align: center;
+}
+
+table#tPlayer tr:nth-child(even) {
+    background-color: #eee;
+}
+
 table tr:nth-child(even) {
     background-color: #eee;
 }
