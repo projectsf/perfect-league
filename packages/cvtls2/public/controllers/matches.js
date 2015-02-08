@@ -12,7 +12,7 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
             }
 
             match.$update(function() {
-                $location.path('matches/' + match._id + '/post-result');
+                $location.path('matches');
             });
 
             $scope.matchScoreUpdated = true;
