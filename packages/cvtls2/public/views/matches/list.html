@@ -1,6 +1,16 @@
 <section data-ng-controller="MatchesController" data-ng-init="find()">
 	<table class="cvtls2 center" id="scheduleTable">
 		<tbody>
+			<th colspan="2">Round 8</th>
+			<tr data-ng-repeat="match in roundEightMatches">
+				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
+				<td>{{match.status}}</a></td>
+			</tr>
+			<th colspan="2">Round 7</th>
+			<tr data-ng-repeat="match in roundSevenMatches">
+				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>
+				<td>{{match.status}}</a></td>
+			</tr>
 			<th colspan="2">Round 6</th>
 			<tr data-ng-repeat="match in roundSixMatches">
 				<td><a data-ng-href="#!/matches/{{match._id}}/post-result">{{match.players.playerOne.firstName}} {{match.players.playerOne.lastName}} Vs {{match.players.playerTwo.firstName}} {{match.players.playerTwo.lastName}}</a></td>

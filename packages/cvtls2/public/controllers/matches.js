@@ -27,6 +27,8 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
 				$scope.roundFourMatches = [];
 				$scope.roundFiveMatches = [];
 				$scope.roundSixMatches = [];
+				$scope.roundSevenMatches = [];
+				$scope.roundEightMatches = [];
 				for (var ii = 0 ; ii < matches.length; ii=ii+1) {
 					var match = matches[ii];
 
@@ -64,6 +66,12 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
 					}
 					else if (match.roundNumber === 6) {
 						$scope.roundSixMatches.push(match);
+					}
+					else if (match.roundNumber === 7) {
+						$scope.roundSevenMatches.push(match);
+					}
+					else if (match.roundNumber === 8) {
+						$scope.roundEightMatches.push(match);
 					}
 				}
             });
