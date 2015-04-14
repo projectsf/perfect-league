@@ -37,7 +37,7 @@ angular.module('mean').controller('MatchesController', ['$scope', '$stateParams'
 						var now = new Date();
 						var expires = new Date(match.expires);
 						if ( now > expires ) {
-							match.status = 'Forfeit';
+							match.status = 'Did Not Play';
 						} else {
 							match.status = 'Not Complete';
 						}
