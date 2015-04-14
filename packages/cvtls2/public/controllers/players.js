@@ -81,7 +81,7 @@ angular.module('mean').controller('PlayersController', ['$scope', '$stateParams'
 								var now = new Date();
 								var expires = new Date($scope.matches[jj].expires);
 								if (now > expires) {
-									$scope.players[ii].points -= 2;
+									$scope.players[ii].points -= 0;
 								}
 
 							} else if ((setsWon === 2) && (setsLost === 0)) {
@@ -169,7 +169,7 @@ angular.module('mean').controller('PlayersController', ['$scope', '$stateParams'
 									now = new Date();
 									expires = new Date($scope.matches[jj].expires);
 									if ( now > expires ) {
-										matchStatus = 'Forfeit';
+										matchStatus = 'Did Not Play';
 									} else {
 										matchStatus = 'Not Complete';
 									}
@@ -225,7 +225,7 @@ angular.module('mean').controller('PlayersController', ['$scope', '$stateParams'
 									now = new Date();
 									expires = new Date($scope.matches[jj].expires);
 									if ( now > expires ) {
-										matchStatus = 'Forfeit';
+										matchStatus = 'Did Not Play';
 									} else {
 										matchStatus = 'Not Complete';
 									}
@@ -285,7 +285,7 @@ angular.module('mean').controller('PlayersController', ['$scope', '$stateParams'
 										now = new Date();
 										expires = new Date($scope.matches[jj].expires);
 										if (now > expires) {
-											$scope.players[ii].points -= 2;
+											$scope.players[ii].points -= 0;
 											$scope.players[ii].gamesForfeited += 1;
 										}
 
